@@ -1,4 +1,4 @@
-'''视频教程链接 https://www.bilibili.com/video/BV1UL411V7XK?p=2&share_source=copy_web   昵称：海喂喂喂'''
+'''视频教程https://www.bilibili.com/video/BV1UL411V7XK?p=2&share_source=copy_web'''
 
 import time, image,sensor,math,pyb,ustruct
 from image import SEARCH_EX, SEARCH_DS
@@ -24,7 +24,7 @@ sensor.set_windowing(0, 40, 160, 40)  #这个是观察窗口  后面ROI设置也
 
 # Load template.
 # Template should be a small (eg. 32x32 pixels) grayscale image.
-#加载模板图片
+#加载模板图片（需要自己重新截图并放入openmv的u盘中）
 template01 = image.Image("/1.pgm")
 '''template02 = image.Image("/2.pgm")
 template03 = image.Image("/3.pgm")
@@ -67,7 +67,9 @@ template8RR = image.Image("/8RR.pgm")'''
 
 
 
-uart = pyb.UART(3, 115200, timeout_char = 1000)     #定义串口3变量
+uart = pyb.UART(3, 115200, timeout_char = 1000)     
+#串口通信波特率115200
+#定义串口3变量
 blue_led = LED(3)
 
 
@@ -81,7 +83,12 @@ x = 0
 blue_led  = LED(3)
 data = [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00]
 
-########串口接收数据函数处理#########
+
+
+
+########串口接收数据函数处理##############
+
+
 def UartReceiveDate():  #这个函数不能运行太快，否则会导致串口读取太快导致出错
     global Find_Task
     global Target_Num
